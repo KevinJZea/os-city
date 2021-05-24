@@ -1,0 +1,25 @@
+.main-select-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-select--label {
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.main-select {
+  background: none;
+  border: 1px solid rgb(56, 56, 56);
+  font-size: 1.2rem;
+  display: block;
+  padding: 4px 3px;
+  border-radius: 5px;
+}
+
+.main-select option {
+  background: none;
+}

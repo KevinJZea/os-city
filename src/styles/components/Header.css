@@ -1,0 +1,11 @@
+.main-header {
+  width: 100%;
+  min-height: 80px;
+  background: none;
+}
+
+.main-title {
+  margin: 20px 0;
+  font-size: 2.4rem;
+  text-align: center;
+}

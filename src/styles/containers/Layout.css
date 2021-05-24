@@ -1,0 +1,6 @@
+.main {
+  min-height: calc(100vh - 100px);
+  /* 100vh - Header */
+  background: none;
+  padding: 0 10px;
+}

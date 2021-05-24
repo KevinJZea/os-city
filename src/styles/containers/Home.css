@@ -1,0 +1,14 @@
+.selects-container {
+  width: 100%;
+  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.main-graphic-container {
+  width: 100%;
+  height: auto;
+}
