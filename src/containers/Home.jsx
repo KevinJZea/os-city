@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import AppContext from "../context/AppContext";
 
 import MainSelect from "../components/MainSelect";
-import MainGraphic from "../components/MainGraphic";
+import BarChart from "../components/BarChart";
 import DataText from "../components/DataText";
 
 import "../styles/containers/Home.css";
 
 const Home = () => {
   const { state } = useContext(AppContext);
-  const { mexicanStates, years, orderData, idh } = state;
+  const { mexicanStates, years, orderData, selectedData } = state;
 
   return (
     <>
@@ -32,12 +32,55 @@ const Home = () => {
       </section>
 
       <section className="main-graphic-container">
-        <MainGraphic />
+        <BarChart
+          data={selectedData.idh.mexicanStatesData}
+          selectedState={selectedData.mexicanState}
+          selectedYear={selectedData.year}
+          sort={selectedData.sort}
+          />
       </section>
 
-      <DataText title="Promedio IDH" value={idh.averageIDH} />
-      <DataText title="IDH m&aacute;s bajo" value={idh.minIDH} />
-      <DataText title="IDH m&aacute;s alto" value={idh.maxIDH} />
+      <section className="datatext-main-container">
+        <div className="datatext-container">
+          {selectedData.year.title
+          ? (<>
+              <DataText
+                title={`Promedio IDH de ${selectedData.year.title}`}
+                value={selectedData.idh.averageIDH ? selectedData.idh.averageIDH : "Sin datos"}
+              />
+              <DataText
+                title={`IDH más bajo de ${selectedData.year.title}`}
+                value={selectedData.idh.lowestIDH ? selectedData.idh.lowestIDH : " Sin datos"}
+              />
+              <DataText
+                title={`IDH más alto de ${selectedData.year.title}`}
+                value={selectedData.idh.highestIDH ? selectedData.idh.highestIDH : "Sin datos"}
+              />
+            </>)
+            : (<></>)
+          }
+        </div>
+
+        <div className="datatext-container">
+          {selectedData.mexicanState.idh
+            ? (<>
+              <DataText
+                title={`Promedio IDH de ${selectedData.mexicanState.title}`}
+                value={selectedData.mexicanState ? selectedData.mexicanState.idh.averageIDH : "Sin datos"}
+              />
+              <DataText
+                title={`IDH más bajo de ${selectedData.mexicanState.title}`}
+                value={selectedData.mexicanState ? selectedData.mexicanState.idh.lowestIDH : "Sin datos"}
+              />
+              <DataText
+                title={`IDH más alto de ${selectedData.mexicanState.title}`}
+                value={selectedData.mexicanState ? selectedData.mexicanState.idh.highestIDH : "Sin datos"}
+              />
+            </>)
+            : (<></>)
+          }
+        </div>
+      </section>
     </>
   );
 

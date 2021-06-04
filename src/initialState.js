@@ -5,276 +5,303 @@ const initialState = {
     data: [
       {
         id: 1,
+        title: 'Alfabéticamente',
+        value: 'alfabeticamente',
+      },
+      {
+        id: 2,
         title: 'Ascendente',
         value: 'ascendente',
       },
       {
-        id: 2,
+        id: 3,
         title: 'Descendente',
         value: 'descendente',
-      },
-      {
-        id: 3,
-        title: 'Alfabéticamente',
-        value: 'alfabeticamente',
       },
     ],
   },
   years: {
-    title: 'Años',
+    title: 'Año',
     name: 'years',
     data: [
       {
+        // Preview of Data Structure
         id: 1,
         title: '1995',
         value: '1995',
+        yearData: {
+          averageIDH: 0,
+          lowestIDH: 0,
+          highestIDH: 0,
+          mexicanStatesData: [],
+        },
       },
     ],
   },
   mexicanStates: {
-    title: 'Estados',
+    title: 'Estado',
     name: 'mexican-states',
     data: [
       {
         id: 1,
         title: 'Aguascalientes',
+        shortTitle: 'AGU',
         value: 'aguascalientes',
         idh: 0,
       },
       {
         id: 2,
         title: 'Baja California Norte',
+        shortTitle: 'BCN',
         value: 'baja-california-norte',
         idh: 0,
       },
       {
         id: 3,
         title: 'Baja California Sur',
+        shortTitle: 'BCS',
         value: 'baja-california-sur',
         idh: 0,
       },
       {
         id: 4,
         title: 'Campeche',
+        shortTitle: 'CAM',
         value: 'campeche',
         idh: 0,
       },
       {
         id: 5,
         title: 'Chiapas',
+        shortTitle: 'CHP',
         value: 'chiapas',
         idh: 0,
       },
       {
         id: 6,
         title: 'Chihuahua',
+        shortTitle: 'CHH',
         value: 'chihuahua',
         idh: 0,
       },
       {
         id: 7,
         title: 'Ciudad de México',
+        shortTitle: 'CMX',
         value: 'ciudad-de-mexico',
         idh: 0,
       },
       {
         id: 8,
         title: 'Coahuila',
+        shortTitle: 'COA',
         value: 'coahuila',
         idh: 0,
       },
       {
         id: 9,
         title: 'Colima',
+        shortTitle: 'COL',
         value: 'colima',
         idh: 0,
       },
       {
         id: 10,
         title: 'Durango',
+        shortTitle: 'DUR',
         value: 'durango',
         idh: 0,
       },
       {
         id: 11,
         title: 'Estado de México',
+        shortTitle: 'MEX',
         value: 'estado-de-mexico',
         idh: 0,
       },
       {
         id: 12,
         title: 'Guanajuato',
+        shortTitle: 'GUA',
         value: 'guanajuato',
         idh: 0,
       },
       {
         id: 13,
         title: 'Guerrero',
+        shortTitle: 'GRO',
         value: 'guerrero',
         idh: 0,
       },
       {
         id: 14,
         title: 'Hidalgo',
+        shortTitle: 'HID',
         value: 'hidalgo',
         idh: 0,
       },
       {
         id: 15,
         title: 'Jalisco',
+        shortTitle: 'JAL',
         value: 'jalisco',
         idh: 0,
       },
       {
         id: 16,
         title: 'Michoacán',
+        shortTitle: 'MIC',
         value: 'michoacan',
         idh: 0,
       },
       {
         id: 17,
         title: 'Morelos',
+        shortTitle: 'MOR',
         value: 'morelos',
         idh: 0,
       },
       {
         id: 18,
         title: 'Nayarit',
+        shortTitle: 'NAY',
         value: 'Nayarit',
         idh: 0,
       },
       {
         id: 19,
         title: 'Nuevo León',
+        shortTitle: 'NLE',
         value: 'nuevo-leon',
         idh: 0,
       },
       {
         id: 20,
         title: 'Oaxaca',
+        shortTitle: 'OAX',
         value: 'oaxaca',
         idh: 0,
       },
       {
         id: 21,
         title: 'Puebla',
+        shortTitle: 'PUE',
         value: 'puebla',
         idh: 0,
       },
       {
         id: 22,
         title: 'Querétaro',
+        shortTitle: 'QUE',
         value: 'queretaro',
         idh: 0,
       },
       {
         id: 23,
         title: 'Quintana Roo',
+        shortTitle: 'ROO',
         value: 'quintana-roo',
         idh: 0,
       },
       {
         id: 24,
         title: 'San Luis Potosí',
+        shortTitle: 'SLP',
         value: 'san-luis-potosi',
         idh: 0,
       },
       {
         id: 25,
         title: 'Sinaloa',
+        shortTitle: 'SIN',
         value: 'sinaloa',
         idh: 0,
       },
       {
         id: 26,
         title: 'Sonora',
+        shortTitle: 'SON',
         value: 'sonora',
         idh: 0,
       },
       {
         id: 27,
         title: 'Tabasco',
+        shortTitle: 'TAB',
         value: 'tabasco',
         idh: 0,
       },
       {
         id: 28,
         title: 'Tamaulipas',
+        shortTitle: 'TAM',
         value: 'tamaulipas',
         idh: 0,
       },
       {
         id: 29,
         title: 'Tlaxcala',
+        shortTitle: 'TLA',
         value: 'tlaxcala',
         idh: 0,
       },
       {
         id: 30,
         title: 'Veracruz',
+        shortTitle: 'VER',
         value: 'veracruz',
         idh: 0,
       },
       {
         id: 31,
         title: 'Yucatán',
+        shortTitle: 'YUC',
         value: 'yucatan',
         idh: 0,
       },
       {
         id: 32,
         title: 'Zacatecas',
+        shortTitle: 'ZAC',
         value: 'zacatecas',
         idh: 0,
       },
     ],
   },
-  idh: {
-    averageIDH: 0,
-    minIDH: 0,
-    maxIDH: 0,
+  selectedData: {
+    idh: {
+      mexicanStatesData: [],
+    },
+    mexicanState: {},
+    year: {},
+    sort: {},
+
+    /* Data Structure
+    idh: {
+      averageIDH: 0,
+      lowestIDH: 0,
+      highestIDH: 0,
+      mexicanStatesData: [],
+    },
+    mexicanState: {
+      id: 1,
+      title: 'Aguascalientes',
+      shortTitle: 'AGU',
+      value: 'aguascalientes',
+      idh: 0,
+    },
+    year: {
+      id: 1,
+      title: '1995',
+      value: '1995',
+    },
+    sort: {
+      id: 1,
+      title: 'Ascendente',
+      value: 'ascendente',
+    },
+    */
   },
 };
-
-/* const creatingYears = () => {
-  const maxYear = 2050;
-  const minYear = 1950;
-  const maxNum = 10;
-  const minNum = 6;
-
-  const randomYear = Math.round(Math.random() * (maxYear - minYear) + minYear);
-  const randomNumberOfYears = Math.round(
-    Math.random() * (maxNum - minNum) + minNum
-  );
-
-  for (let i = 0; i < randomNumberOfYears; i += 1) {
-    let newYear = {
-      id: i,
-      title: `${randomYear + i}`,
-      value: `${randomYear + i}`,
-    };
-    initialState.years.data.push(newYear);
-  }
-};
-
-creatingYears(); */
-
-/*
-
-const creatingIDH = () => {
-  const randomIDH = Math.round(Math.random(), 2);
-
-  for (let i = 0; i < randomNumberOfYears; i += 1) {
-    let newYear = {
-      id: i,
-      title: `${randomYear + i}`,
-      value: `${randomYear + i}`,
-    };
-    initialState.years.data.push(newYear);
-  }
-};
-
-creatingIDH();
-*/
 
 export default initialState;

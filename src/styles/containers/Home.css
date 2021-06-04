@@ -1,14 +1,24 @@
 .selects-container {
   width: 100%;
   padding: 10px 0;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  justify-content: center;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 5px;
 }
 
 .main-graphic-container {
   width: 100%;
   height: auto;
+}
+
+.datatext-main-container {
+  margin: 0 7%;
+  max-width: 86%; /* 100% - 7% - 7% */
+}
+
+@media (min-width: 750px) {
+  .datatext-container {
+    display: inline-block;
+    min-width: 49%;
+  }
 }

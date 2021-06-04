@@ -2,15 +2,14 @@ import React, { useEffect, useContext } from 'react';
 import AppContext from "../context/AppContext";
 import Header from "./Header";
 
-import "../styles/containers/Layout.css";
+import "../styles/components/Layout.css";
 
 const Layout = ( { children } ) => {
-  const { state, addYear, removeYear, addDataToStates, updateIDH } = useContext(AppContext);
-
+  const { state, addNewYears } = useContext(AppContext);
 
   useEffect(() => {
 
-    /* Creating Years Starts */
+    /* Creating Complete Years Starts */
     const maxYear = 2050;
     const minYear = 1940;
     const maxNum = 10;
@@ -21,66 +20,66 @@ const Layout = ( { children } ) => {
       Math.random() * (maxNum - minNum) + minNum
     );
 
-    removeYear();
+    const newYears = [];
 
     for (let i = 0; i < randomNumberOfYears; i += 1) {
+      const mexicanStatesList = [];
+      const mexicanStatesLength = state.mexicanStates.data.length; // 32 states
+
+      /* In yearData, data for each mexicanState is created */
+
+      let sumOfIDH = 0;
+      let lowestOfIDH;
+      let highestOfIDH;
+
+      for (let j = 0; j < mexicanStatesLength; j += 1) {
+
+        const randomIDH = Math.random().toFixed(2);
+        sumOfIDH += parseFloat(randomIDH);
+
+        if (j === 0) {
+          lowestOfIDH = randomIDH;
+          highestOfIDH = randomIDH;
+        } else {
+          if (lowestOfIDH > randomIDH) {
+            lowestOfIDH = randomIDH;
+          }
+
+          if (highestOfIDH < randomIDH) {
+            highestOfIDH = randomIDH;
+          }
+        }
+
+        const newState = {
+          id: j + 1,
+          title: state.mexicanStates.data[j].title,
+          shortTitle: state.mexicanStates.data[j].shortTitle,
+          value: state.mexicanStates.data[j].value,
+          idh: randomIDH,
+        };
+
+        mexicanStatesList.push(newState);
+      }
+
+      const averageOfIDH = (sumOfIDH / mexicanStatesLength).toFixed(2);
+
       const newYear = {
         id: i,
         title: `${randomYear + i}`,
         value: `${randomYear + i}`,
+        yearData: {
+          averageIDH: averageOfIDH,
+          lowestIDH: lowestOfIDH,
+          highestIDH: highestOfIDH,
+          mexicanStatesData: mexicanStatesList,
+        },
       };
-      addYear(newYear);
-    }
-    /* Creating Years Ends */
 
-    /* Adding IDH to States Starts */
-
-
-    const mexicanStatesLength = state.mexicanStates.data.length;
-    const mexicanStates = [];
-    let sumOfIDH = 0;
-    let minOfIDH;
-    let maxOfIDH;
-
-    for (let i = 0; i < mexicanStatesLength; i += 1) {
-      const randomIDH = Math.random();
-      parseFloat(randomIDH);
-      sumOfIDH += randomIDH;
-
-      if (i === 0) {
-        minOfIDH = randomIDH;
-        maxOfIDH = randomIDH;
-      } else {
-
-        if (randomIDH < minOfIDH) {
-          minOfIDH = randomIDH;
-        }
-
-        if (randomIDH > maxOfIDH) {
-          maxOfIDH = randomIDH;
-        }
-
-      }
-
-      const mexicanState = {
-        id: i,
-        title: state.mexicanStates.data[i].title,
-        value: state.mexicanStates.data[i].value,
-        idh: randomIDH,
-      }
-      mexicanStates.push(mexicanState);
+      newYears.push(newYear);
     }
 
-    const averageOfIDH = (sumOfIDH / mexicanStatesLength).toFixed(2);
-    minOfIDH = minOfIDH.toFixed(2);
-    maxOfIDH = maxOfIDH.toFixed(2);
-    console.log(averageOfIDH, sumOfIDH, mexicanStatesLength);
-
-    updateIDH(averageOfIDH, minOfIDH, maxOfIDH);
-    addDataToStates(mexicanStates);
-
-    /* Adding IDH to States Ends */
-
+    addNewYears(newYears);
+    /* Creating Complete Years Ends */
   }, []);
 
   return (

@@ -4,65 +4,75 @@ import initialState from '../initialState';
 const useInitialState = () => {
   const [state, setState] = useState(initialState);
 
-  const addToCart = (payload) => {
-    setState({
-      ...state,
-      cart: [...state.cart, payload],
-    });
-  };
-
-  const addYear = (newYear) => {
+  const addNewYears = (newYears) => {
     setState((prevState) => ({
       ...prevState,
       years: {
         ...prevState.years,
-        data: [...prevState.years.data, newYear],
+        data: newYears,
       },
     }));
   };
 
-  const removeYear = () => {
+  const updateSelectedIDH = (newSelectedData) => {
     setState((prevState) => ({
       ...prevState,
-      years: {
-        ...prevState.years,
-        data: [],
+
+      selectedData: {
+        ...prevState.selectedData,
+        idh: newSelectedData,
       },
     }));
   };
 
-  const addDataToStates = (mexicanStates) => {
+  const updateSelectedMexicanState = (newMexicanState) => {
     setState((prevState) => ({
       ...prevState,
 
-      mexicanStates: {
-        ...prevState.mexicanStates,
-
-        data: mexicanStates,
+      selectedData: {
+        ...prevState.selectedData,
+        mexicanState: newMexicanState,
       },
     }));
   };
 
-  const updateIDH = (averageOfIDH, minOfIDH, maxOfIDH) => {
+  const updateSelectedYear = (newYear) => {
     setState((prevState) => ({
       ...prevState,
 
-      idh: {
-        averageIDH: averageOfIDH,
-        minIDH: minOfIDH,
-        maxIDH: maxOfIDH,
+      selectedData: {
+        ...prevState.selectedData,
+        year: newYear,
+      },
+    }));
+  };
+
+  const updateSelectedSort = (newSort) => {
+    setState((prevState) => ({
+      ...prevState,
+
+      selectedData: {
+        ...prevState.selectedData,
+        sort: newSort,
       },
     }));
   };
 
   return {
-    addToCart,
-    addYear,
-    removeYear,
-    addDataToStates,
-    updateIDH,
+    addNewYears,
+    updateSelectedIDH,
+    updateSelectedMexicanState,
+    updateSelectedYear,
+    updateSelectedSort,
     state,
   };
+
+  // const addToCart = (payload) => {
+  //   setState({
+  //     ...state,
+  //     cart: [...state.cart, payload],
+  //   });
+  // };
 
   //   const removeFromCart = (payload, indexToRemove) => {
   //     setState({

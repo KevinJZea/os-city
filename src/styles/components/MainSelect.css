@@ -1,4 +1,6 @@
 .main-select-container {
+  margin: 0 auto;
+  max-width: 1000px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,4 +24,33 @@
 
 .main-select option {
   background: none;
+}
+
+@media (min-width: 480px) {
+  .main-select {
+    padding: 6px 10px;
+  }
+}
+
+@media (min-width: 600px) {
+  .main-select--label {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  .main-select {
+    font-size: 1.4rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (min-width: 1000px) {
+  .main-select--label {
+    font-size: 1.8rem;
+  }
+
+  .main-select {
+    font-size: 1.6rem;
+    padding: 7px 14px;
+  }
 }
