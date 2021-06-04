@@ -39,7 +39,7 @@ const BarChart = ( { data, selectedYear, selectedState, sort } ) => {
 
       const xScale = d3.scaleLinear()
         .domain([0, 1])
-        .range([0, width - axisMargin.left - 10]);
+        .range([0, width - axisMargin.left - axisMargin.right]);
 
       const yScale = d3.scaleBand()
         .domain(data.map(d => d.shortTitle))
@@ -71,7 +71,7 @@ const BarChart = ( { data, selectedYear, selectedState, sort } ) => {
         .enter().append("rect")
           .attr("x", axisMargin.left)
           .attr("y", d => (d.id * (((height - axisMargin.top) / 32)) + 52.5))
-          .attr("width", d => d.idh * (width - axisMargin.left))
+          .attr("width", d => d.idh * (width - axisMargin.left - axisMargin.right))
           .attr("height", barHeight - gap);
 
       /* Adding Data Bars Ends */
