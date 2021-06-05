@@ -45,6 +45,17 @@ const BarChart = ( { data, selectedYear, selectedState, sort } ) => {
         .domain(data.map(d => d.shortTitle))
         .range([0, height-axisMargin.top]);
 
+      if (sort.value === "ascendente") {
+        const sortedData = data.sort((a, b) => d3.ascending(a.idh, b.idh));
+        yScale.domain(sortedData.map(d => d.shortTitle));
+      } else if (sort.value === "descendente") {
+        const sortedData = data.sort((a, b) => d3.descending(a.idh, b.idh));
+        yScale.domain(sortedData.map(d => d.shortTitle));
+      } else if (sort.value === "alfabeticamente") {
+        const sortedData = data.sort((a, b) => d3.ascending(a.shortTitle, b.shortTitle));
+        yScale.domain(sortedData.map(d => d.shortTitle));
+      }
+
       const xAxis = d3.axisTop()
         .scale(xScale)
         .tickSize(axisMargin.top - height);
@@ -79,14 +90,13 @@ const BarChart = ( { data, selectedYear, selectedState, sort } ) => {
       /* Changing if sort changes Starts */
 
       if (sort.value === "ascendente") {
-        d3.select("#bar-chart")
-          .selectAll("rect")
-            .sort((a,b) => d3.ascending(a.idh, b.idh))
-            .attr("y", (d, i) => ((i+1) * (((height - axisMargin.top) / 32)) + 52.5));
+        svg.selectAll("rect")
+          .sort((a,b) => d3.ascending(a.idh, b.idh))
+          .attr("y", (d, i) => ((i+1) * (((height - axisMargin.top) / 32)) + 52.5));
       } else if (sort.value === "descendente") {
         svg.selectAll("rect")
-            .sort((a,b) => d3.descending(a.idh, b.idh))
-            .attr("y", (d, i) => ((i+1) * (((height - axisMargin.top) / 32)) + 52.5));
+          .sort((a,b) => d3.descending(a.idh, b.idh))
+          .attr("y", (d, i) => ((i+1) * (((height - axisMargin.top) / 32)) + 52.5));
       }
 
       /* Changing if sort changes Ends */
@@ -103,11 +113,23 @@ const BarChart = ( { data, selectedYear, selectedState, sort } ) => {
         .domain(data.map(d => d.title))
         .range([0, width - axisMargin.left - axisMargin.right]);
 
+      if (sort.value === "ascendente") {
+        const sortedData = data.sort((a, b) => d3.ascending(a.idh, b.idh));
+        xScale.domain(sortedData.map(d => d.title));
+      } else if (sort.value === "descendente") {
+        const sortedData = data.sort((a, b) => d3.descending(a.idh, b.idh));
+        xScale.domain(sortedData.map(d => d.title));
+      } else if (sort.value === "alfabeticamente") {
+        const sortedData = data.sort((a, b) => d3.ascending(a.title, b.title));
+        xScale.domain(sortedData.map(d => d.title));
+      }
+
       const xAxis = d3.axisBottom()
         .scale(xScale);
 
       const yAxis = d3.axisLeft()
         .scale(yScale)
+        .ticks(20)
         .tickSize(axisMargin.left + axisMargin.right - width);
 
       svg.append("g")

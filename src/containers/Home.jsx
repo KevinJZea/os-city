@@ -37,7 +37,7 @@ const Home = () => {
           selectedState={selectedData.mexicanState}
           selectedYear={selectedData.year}
           sort={selectedData.sort}
-          />
+        />
       </section>
 
       <section className="datatext-main-container">

@@ -115,7 +115,7 @@ const initialState = {
       {
         id: 11,
         title: 'Estado de México',
-        shortTitle: 'MEX',
+        shortTitle: 'EDO',
         value: 'estado-de-mexico',
         idh: 0,
       },
